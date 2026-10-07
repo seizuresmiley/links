@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="みのり — ラブライブ！＆メディアミックスDJ。ミックス、エディット、各種リンク。">
-  <meta name="theme-color" content="#f5f4f0">
+  <meta name="theme-color" content="#111513">
   <title>みのり — リンク</title>
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://hasunosoraschoolidol.club/links/">
@@ -20,12 +20,15 @@
   <meta name="twitter:image" content="https://hasunosoraschoolidol.club/img/preview.jpg">
   <style>
     :root {
-      color-scheme: light;
-      --paper: #f5f4f0;
-      --ink: #202921;
-      --muted: #596159;
-      --line: #d8ddd4;
-      --accent: #355940;
+      color-scheme: dark;
+      --paper: #111513;
+      --ink: #eff3ee;
+      --muted: #acb8ad;
+      --line: #36443b;
+      --accent: #a9d4b2;
+      --surface: #1a211d;
+      --control: #222e26;
+      --control-hover: #2c3d31;
     }
     * { box-sizing: border-box; }
     [hidden] { display: none !important; }
@@ -51,7 +54,7 @@
     }
     .language-switch button[aria-pressed="true"] {
       border-color: var(--line);
-      background: #fff;
+      background: var(--surface);
       color: var(--ink);
       font-weight: 650;
     }
@@ -71,7 +74,7 @@
       gap: 16px;
       min-height: 70px;
       padding: 14px 18px;
-      background: #fff;
+      background: var(--surface);
       border: 1px solid var(--line);
       border-radius: 10px;
       color: var(--ink);
@@ -83,7 +86,7 @@
     .arrow { font-size: 22px; color: var(--accent); }
     .listen { margin-top: 36px; }
     h2 { margin: 0 0 16px; font-size: 20px; letter-spacing: -.3px; }
-    .player-card { padding: 18px; background: #fff; border: 1px solid var(--line); border-radius: 10px; }
+    .player-card { padding: 18px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; }
     .player-card + .player-card { margin-top: 12px; }
     .player-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
     h3 { margin: 0; font-size: 16px; font-weight: 650; }
@@ -98,14 +101,14 @@
       padding: 12px;
       border: 1px solid var(--line);
       border-radius: 6px;
-      background: #f4f6f2;
+      background: var(--control);
       color: var(--accent);
       font: inherit;
       font-size: 14px;
       font-weight: 600;
       cursor: pointer;
     }
-    .load-player:hover { background: #eaf0e6; border-color: var(--accent); }
+    .load-player:hover { background: var(--control-hover); border-color: var(--accent); }
     iframe { display: block; width: 100%; border: 0; border-radius: 6px; }
     .note { margin: 12px 0 0; font-size: 12px; color: var(--muted); }
     footer { margin-top: 30px; font-size: 13px; }
