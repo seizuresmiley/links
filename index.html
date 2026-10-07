@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="DJ mixes, edits, and links from seirent.">
+  <meta name="description" content="みのり — ラブライブ！＆メディアミックスDJ。ミックス、エディット、各種リンク。">
   <meta name="theme-color" content="#f5f4f0">
-  <title>seirent — links</title>
+  <title>みのり — リンク</title>
   <style>
     :root {
       color-scheme: light;
@@ -16,6 +16,7 @@
       --accent: #355940;
     }
     * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
     body {
       margin: 0;
       background: var(--paper);
@@ -24,6 +25,24 @@
       -webkit-text-size-adjust: 100%;
     }
     main { width: min(100% - 40px, 480px); margin: 0 auto; padding: 56px 0 28px; }
+    .language-switch { display: flex; justify-content: flex-end; gap: 4px; margin-bottom: 24px; }
+    .language-switch button {
+      min-height: 44px;
+      padding: 8px 12px;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .language-switch button[aria-pressed="true"] {
+      border-color: var(--line);
+      background: #fff;
+      color: var(--ink);
+      font-weight: 650;
+    }
     header { margin-bottom: 28px; }
     h1 { margin: 0; font-size: 36px; line-height: 1.2; letter-spacing: -1px; font-weight: 750; }
     header p { margin: 8px 0 0; color: var(--muted); }
@@ -86,18 +105,22 @@
 </head>
 <body>
   <main>
+    <div class="language-switch" role="group" aria-label="Language / 言語" hidden>
+      <button type="button" lang="ja" data-lang="ja" aria-pressed="true">日本語</button>
+      <button type="button" lang="en" data-lang="en" aria-pressed="false">English</button>
+    </div>
     <header>
-      <h1>seirent</h1>
-      <p>DJ mixes &amp; edits.</p>
+      <h1>みのり</h1>
+      <p data-i18n="description">ラブライブ！＆メディアミックスDJ。</p>
     </header>
 
-    <nav class="links" aria-label="Find me online">
+    <nav class="links" aria-label="各種リンク" data-i18n-label="linksLabel">
       <a class="link" href="https://soundcloud.com/seirent">
-        <span><strong>SoundCloud</strong><small>Tracks &amp; edits</small></span>
+        <span><strong>SoundCloud</strong><small data-i18n="tracks">トラック＆エディット</small></span>
         <span class="arrow" aria-hidden="true">↗</span>
       </a>
       <a class="link" href="https://www.mixcloud.com/seirent/">
-        <span><strong>Mixcloud</strong><small>DJ mixes</small></span>
+        <span><strong>Mixcloud</strong><small data-i18n="djMixes">DJミックス</small></span>
         <span class="arrow" aria-hidden="true">↗</span>
       </a>
       <a class="link" href="https://x.com/seirent_127">
@@ -107,49 +130,116 @@
     </nav>
 
     <section class="listen" aria-labelledby="listen-heading">
-      <h2 id="listen-heading">Listen</h2>
+      <h2 id="listen-heading" data-i18n="listen">聴く</h2>
 
       <article class="player-card">
         <div class="player-heading">
-          <h3>Mixes</h3>
-          <a href="https://www.mixcloud.com/seirent/">On Mixcloud ↗</a>
+          <h3 data-i18n="mixes">ミックス</h3>
+          <a href="https://www.mixcloud.com/seirent/" data-i18n="onMixcloud">Mixcloudで聴く ↗</a>
         </div>
         <div class="player-slot">
           <button class="load-player" type="button" data-player="mixcloud">
-            <span aria-hidden="true">▶</span> Load Mixcloud player
+            <span aria-hidden="true">▶</span> <span data-i18n="loadMixcloud">Mixcloudプレーヤーを読み込む</span>
           </button>
         </div>
       </article>
 
       <article class="player-card">
         <div class="player-heading">
-          <h3>Tracks &amp; edits</h3>
-          <a href="https://soundcloud.com/seirent">On SoundCloud ↗</a>
+          <h3 data-i18n="tracks">トラック＆エディット</h3>
+          <a href="https://soundcloud.com/seirent" data-i18n="onSoundcloud">SoundCloudで聴く ↗</a>
         </div>
         <div class="player-slot">
           <button class="load-player" type="button" data-player="soundcloud">
-            <span aria-hidden="true">▶</span> Load SoundCloud player
+            <span aria-hidden="true">▶</span> <span data-i18n="loadSoundcloud">SoundCloudプレーヤーを読み込む</span>
           </button>
         </div>
       </article>
-      <p class="note">Players load when tapped. No autoplay.</p>
-      <noscript><p class="note">Listen using the SoundCloud and Mixcloud links above.</p></noscript>
+      <p class="note" data-i18n="playerNote">タップするとプレーヤーを読み込みます。自動再生はしません。</p>
+      <noscript><p class="note">上のリンクからSoundCloud・Mixcloudで聴けます。</p></noscript>
     </section>
 
-    <footer><a href="https://hasunosoraschoolidol.club/">← Main site</a></footer>
+    <footer><a href="https://hasunosoraschoolidol.club/" data-i18n="mainSite">← メインサイト</a></footer>
   </main>
 
   <script>
+    const translations = {
+      ja: {
+        title: 'みのり — リンク',
+        description: 'ラブライブ！＆メディアミックスDJ。',
+        metaDescription: 'みのり — ラブライブ！＆メディアミックスDJ。ミックス、エディット、各種リンク。',
+        linksLabel: '各種リンク',
+        tracks: 'トラック＆エディット',
+        djMixes: 'DJミックス',
+        listen: '聴く',
+        mixes: 'ミックス',
+        onMixcloud: 'Mixcloudで聴く ↗',
+        onSoundcloud: 'SoundCloudで聴く ↗',
+        loadMixcloud: 'Mixcloudプレーヤーを読み込む',
+        loadSoundcloud: 'SoundCloudプレーヤーを読み込む',
+        playerNote: 'タップするとプレーヤーを読み込みます。自動再生はしません。',
+        mainSite: '← メインサイト',
+        mixcloudTitle: 'みのりのDJミックス（Mixcloud）',
+        soundcloudTitle: 'みのりのトラック＆エディット（SoundCloud）'
+      },
+      en: {
+        title: 'みのり — links',
+        description: 'Love Live and mixed media DJ.',
+        metaDescription: 'みのり — Love Live and mixed media DJ. Mixes, edits, and links.',
+        linksLabel: 'Find me online',
+        tracks: 'Tracks & edits',
+        djMixes: 'DJ mixes',
+        listen: 'Listen',
+        mixes: 'Mixes',
+        onMixcloud: 'On Mixcloud ↗',
+        onSoundcloud: 'On SoundCloud ↗',
+        loadMixcloud: 'Load Mixcloud player',
+        loadSoundcloud: 'Load SoundCloud player',
+        playerNote: 'Players load when tapped. No autoplay.',
+        mainSite: '← Main site',
+        mixcloudTitle: 'DJ mixes by みのり on Mixcloud',
+        soundcloudTitle: 'Tracks and edits by みのり on SoundCloud'
+      }
+    };
+
+    function setLanguage(language) {
+      const text = translations[language];
+      document.documentElement.lang = language;
+      document.title = text.title;
+      document.querySelector('meta[name="description"]').content = text.metaDescription;
+      document.querySelectorAll('[data-i18n]').forEach(element => {
+        element.textContent = text[element.dataset.i18n];
+      });
+      document.querySelectorAll('[data-i18n-label]').forEach(element => {
+        element.setAttribute('aria-label', text[element.dataset.i18nLabel]);
+      });
+      document.querySelectorAll('[data-lang]').forEach(button => {
+        button.setAttribute('aria-pressed', String(button.dataset.lang === language));
+      });
+      document.querySelectorAll('iframe[data-provider]').forEach(frame => {
+        frame.title = text[frame.dataset.provider + 'Title'];
+      });
+    }
+
+    let savedLanguage;
+    try { savedLanguage = localStorage.getItem('links-language'); } catch {}
+    setLanguage(['ja', 'en'].includes(savedLanguage) ? savedLanguage : (navigator.language.startsWith('ja') ? 'ja' : 'en'));
+    document.querySelector('.language-switch').hidden = false;
+    document.querySelectorAll('[data-lang]').forEach(button => {
+      button.addEventListener('click', () => {
+        setLanguage(button.dataset.lang);
+        try { localStorage.setItem('links-language', button.dataset.lang); } catch {}
+      });
+    });
+
     // Profile feeds update when new music is uploaded; no API key or build needed.
     const players = {
       mixcloud: {
         src: 'https://www.mixcloud.com/widget/iframe/?hide_cover=1&feed=%2Fseirent%2F',
-        title: 'DJ mixes by seirent on Mixcloud',
         height: 300
       },
       soundcloud: {
         src: 'https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Fusers%2F32535567&color=%23355940&auto_play=false&show_artwork=true&show_comments=false&visual=false',
-        title: 'Tracks and edits by seirent on SoundCloud',
         height: 300
       }
     };
@@ -158,7 +248,8 @@
         const player = players[button.dataset.player];
         const frame = document.createElement('iframe');
         frame.src = player.src;
-        frame.title = player.title;
+        frame.dataset.provider = button.dataset.player;
+        frame.title = translations[document.documentElement.lang][button.dataset.player + 'Title'];
         frame.height = String(player.height);
         frame.allow = 'autoplay; encrypted-media';
         button.replaceWith(frame);
